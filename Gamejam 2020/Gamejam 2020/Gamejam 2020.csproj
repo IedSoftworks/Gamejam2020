@@ -66,8 +66,13 @@
     <Compile Include="Background.cs" />
     <Compile Include="GameScene.cs" />
     <Compile Include="GameWindow.cs" />
+    <Compile Include="Levels\Block.cs" />
+    <Compile Include="Levels\GameObject.cs" />
+    <Compile Include="Levels\Level.cs" />
+    <Compile Include="Levels\Preset.cs" />
+    <Compile Include="Levels\Presets.cs" />
+    <Compile Include="Levels\Spike.cs" />
     <Compile Include="Models.cs" />
-    <Compile Include="Objects.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

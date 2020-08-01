@@ -1,6 +1,8 @@
 ﻿using OpenTK;
+using OpenTK.Input;
 using SM.Data.Models;
 using SM.Data.Types.VectorTypes;
+using SM.Keybinds;
 using SM.Scene;
 using SM.Scene.Cameras;
 using SM.Scene.Draw;
@@ -13,8 +15,14 @@ namespace Gamejam_2020
         public Player player;
         public GameScene()
         {
+            KeybindCollection.AutoCheckKeybindCollections.Add(new KeybindCollection()
+            {
+                new Keybind(a => Lights.Ambient = new Color(1,1,1), Key.F11)
+            });
+
             Lights.Ambient = new Color(.1f,.1f,.1f);
-            Lights.Add(new Sun(new Vector3(0,-1,-5)));
+            Lights.Add(new Sun(new Vector3(0,-1,5)));
+            //Lights.Add(new Sun(new Vector3(0,1,5)));
 
             Add(new Background(this));
 

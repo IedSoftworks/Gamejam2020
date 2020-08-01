@@ -24,7 +24,7 @@ namespace Gamejam_2020
         public Background(Scene scene)
         {
             Camera = scene.Camera;
-            DepthFunc = DepthFunction.Always;
+            DepthFunc = DepthFunction.Less;
 
             call = new DrawCall
             {
@@ -53,16 +53,14 @@ namespace Gamejam_2020
             Position pos = new Position
             {
                 X = (float)(SMGlobals.Randomizer.NextDouble() * (Width * 2) * xoffset),
-                Y = (float)(SMGlobals.Randomizer.NextDouble() * (Height * 2) * -1),
+                Y = (float)(SMGlobals.Randomizer.NextDouble() * (Height * 2) * -1 - 3),
                 Z = z
             };
-
-
 
             CallParameter parameter = new CallParameter
             {
                 Position = pos,
-                Size = new Size((float)SMGlobals.Randomizer.NextDouble() * .1f)
+                Size = new Size((float)SMGlobals.Randomizer.NextDouble() * 0.1f)
             };
             call.DrawCallParameters.Add(parameter);
             Animation animation = new Animation(pos, new AnimationStruct(TimeSpan.FromSeconds(5), false, pos, new AnimationVector(pos.X, pos.Y, -1)), false);

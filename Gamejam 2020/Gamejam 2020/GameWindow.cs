@@ -15,6 +15,7 @@ namespace Gamejam_2020
         {
             base.AfterUpdate(e, window);
             ((GameScene) GameScene.Current).player.Tick();
+            Level.Tick();
         }
 
         public override void Loading(EventArgs e, GLWindow window)
@@ -23,6 +24,7 @@ namespace Gamejam_2020
 
             Models.OpenModels();
             Scene.ChangeScene(new GameScene());
+            Level.Create();
         }
     }
 }

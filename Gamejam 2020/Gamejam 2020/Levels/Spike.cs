@@ -5,9 +5,9 @@ namespace Gamejam_2020
 {
     public class Spike : GameObject
     {
-        private static Material defaultMaterial = new Material()
+        public static Material defaultMaterial = new Material()
         {
-            DiffuseColor = new Color(0, 0, 0),
+            DiffuseColor = new Color(.1f, .1f, .1f),
             Shininess = 64
         };
 
@@ -16,7 +16,7 @@ namespace Gamejam_2020
 
         public override void Collision()
         {
-
+            ((GameScene)GameScene.Current).player.Kill();
         }
     }
 }
