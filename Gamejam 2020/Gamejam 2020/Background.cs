@@ -12,10 +12,12 @@ namespace Gamejam_2020
         private const float Width = 5f;
         private const float Height = 5f;
 
+        private DrawCall call;
+
         public Background()
         {
-            Camera = new OrthographicCamera();
-            windowAspect = GLWindow.Window.Aspect;
+            call = new DrawCall();
+            Add(call);
 
             Timer timer = new Timer(1/60f, true)
             {
@@ -28,7 +30,8 @@ namespace Gamejam_2020
         private void TimerSys(Timer timer)
         {
             Position pos = new Position();
-            pos.X = SMGlobals.Randomizer.NextDouble() * Width;
+            pos.X = (float)(SMGlobals.Randomizer.NextDouble() * (Width * 2) - Width);
+            pos.Y = (float)(SMGlobals.Randomizer.NextDouble() * (Height * 2) - Height);
         }
     }
 }
