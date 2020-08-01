@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Background.cs" />
+    <Compile Include="CollisionTester.cs" />
     <Compile Include="GameScene.cs" />
     <Compile Include="GameWindow.cs" />
     <Compile Include="Levels\Block.cs" />
