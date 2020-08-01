@@ -1,5 +1,4 @@
 ﻿using System;
-using Assimp;
 using OpenTK.Graphics.OpenGL4;
 using SM;
 using SM.Animations;
@@ -7,6 +6,7 @@ using SM.Core;
 using SM.Core.Window;
 using SM.Data.Models;
 using SM.Data.Types.VectorTypes;
+using SM.Scene;
 using SM.Scene.Cameras;
 using SM.Scene.Draw;
 using Animation = SM.Animations.Animation;
@@ -17,18 +17,20 @@ namespace Gamejam_2020
     {
         private const float Width = 5f;
         private const float Height = 5f;
+        private const float XOffset = 5f;
+        private const float YOffset = 1f;
 
         private DrawCall call;
 
         public Background(Scene scene)
         {
-            Camera = new PerspectiveCamera();
-            DepthFunc = DepthFunction.Less;
+            Camera = scene.Camera;
+            DepthFunc = DepthFunction.Always;
 
             call = new DrawCall
             {
                 Material = {DiffuseColor = new Color(1,1,1)},
-                Mesh = Models.Cube
+                Mesh = Meshes.Cube1
             };
             Add(call);
 
@@ -42,12 +44,16 @@ namespace Gamejam_2020
 
         private void TimerSys(Timer timer)
         {
+            float xoffset = XOffset * (SMGlobals.Randomizer.NextDouble() < .5f ? -1 : 1);
+
             Position pos = new Position
             {
-                X = (float) (SMGlobals.Randomizer.NextDouble() * (Width * 2) - Width),
-                Y = (float) (SMGlobals.Randomizer.NextDouble() * (Height * 2) - Height),
-                Z = 5f
+                X = (float) (SMGlobals.Randomizer.NextDouble() * (Width * 2) * xoffset),
+                Y = (float) (SMGlobals.Randomizer.NextDouble() * (Height * 2) * -1),
+                Z = 50f
             };
+
+
 
             CallParameter parameter = new CallParameter
             {

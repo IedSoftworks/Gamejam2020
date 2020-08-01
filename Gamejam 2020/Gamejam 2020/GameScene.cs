@@ -36,7 +36,7 @@ namespace Gamejam_2020
             Lights.Ambient = new Color(.1f,.1f,.1f);
             Lights.Add(new Sun(new Vector3(0,-1,-5)));
 
-            Background = new Background();
+            Add(new Background(this));
 
             var p = new Player();
             Add(p);
