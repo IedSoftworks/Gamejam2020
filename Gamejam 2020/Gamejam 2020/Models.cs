@@ -1,4 +1,6 @@
 ﻿using Assimp;
+using OpenTK;
+using SM.Core.Models;
 using SM.Data.Models.Import;
 using Mesh = SM.Data.Models.Mesh;
 using PrimitiveType = OpenTK.Graphics.OpenGL4.PrimitiveType;
@@ -19,6 +21,8 @@ namespace Gamejam_2020
 
             foreach (ImportedMesh mesh in importedMeshes)
             {
+                mesh.CalculateBoundingBox();
+
                 switch (mesh.Name)
                 {
                     case "3DView.006_Spaceship":

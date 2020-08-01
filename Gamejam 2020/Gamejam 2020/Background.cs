@@ -63,7 +63,7 @@ namespace Gamejam_2020
                 Size = new Size((float)SMGlobals.Randomizer.NextDouble() * 0.1f)
             };
             call.DrawCallParameters.Add(parameter);
-            Animation animation = new Animation(pos, new AnimationStruct(TimeSpan.FromSeconds(5), false, pos, new AnimationVector(pos.X, pos.Y, -1)), false);
+            Animation animation = new Animation(pos, new AnimationStruct(TimeSpan.FromSeconds(3), false, pos, new AnimationVector(pos.X, pos.Y, -1)), false);
             animation.End += a => call.DrawCallParameters.Remove(parameter);
             animation.Start();
         }

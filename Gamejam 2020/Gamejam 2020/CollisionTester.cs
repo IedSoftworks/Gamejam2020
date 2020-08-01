@@ -6,13 +6,13 @@ namespace Gamejam_2020
 {
     public static class CollisionTester
     {
-        public static bool Test(GameObject ga, GameObject gb)
+        public static bool Test(Player ga, GameObject gb)
         {
             
-            var aMin = ga.Mesh.OBB_Min + ga.CallParameter.Position;
-            var aMax = ga.Mesh.OBB_Min + ga.CallParameter.Position;
+            var aMin = ga.Mesh.OBB_Min + ga.Position;
+            var aMax = ga.Mesh.OBB_Max + ga.Position;
             var bMin = gb.Mesh.OBB_Min + gb.CallParameter.Position;
-            var bMax = gb.Mesh.OBB_Min + gb.CallParameter.Position;
+            var bMax = gb.Mesh.OBB_Max + gb.CallParameter.Position;
             var boundsA = MakeBoundPoints(new[] {ga.Mesh.OBB_Min, ga.Mesh.OBB_Max});
             var boundsB = MakeBoundPoints(new[] {gb.Mesh.OBB_Min, gb.Mesh.OBB_Max});
             return boundsA.Any(p => IsInBounds(p, bMin, bMax)) || boundsB.Any(p => IsInBounds(p, aMin, aMax));
@@ -20,8 +20,8 @@ namespace Gamejam_2020
 
         public static bool IsInBounds(Vector3 needle, Vector3 hayMin, Vector3 hayMax)
         {
-            return needle.X > hayMin.X && needle.Y > hayMin.Y && needle.Z > hayMin.Z && needle.X < hayMax.X &&
-                   needle.Y < hayMax.Y && needle.Z < hayMax.Z;
+            return needle.X > hayMin.X && needle.Y > hayMin.Y && needle.Z > hayMin.Z && 
+                   needle.X < hayMax.X && needle.Y < hayMax.Y && needle.Z < hayMax.Z;
         }
         public static Vector3[] MakeBoundPoints(Vector3[] array)
         {

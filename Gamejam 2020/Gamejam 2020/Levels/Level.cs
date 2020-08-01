@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting;
 using SM;
+using SM.Animations;
 using SM.Core.Models;
 using SM.Data.Models;
 using SM.Data.Types.VectorTypes;
@@ -17,11 +20,26 @@ namespace Gamejam_2020
         public static Preset? CurrentPreset;
         public static float Speed = 2;
 
+        public static float SizeMultiplier = 0.75f;
+
         public static void Tick()
         {
             if (CurrentPreset.HasValue)
-                foreach (GameObject obj in CurrentPreset.Value.Objects)
+                foreach (GameObject obj in CurrentPreset.Value.Objects.ToArray())
+                {
+                    if (obj.CallParameter.Position.Z < Player.PlayerObject.Position.Z-4)
+                    {
+                        obj.DrawCall.DrawCallParameters.Remove(obj.CallParameter);
+                        CurrentPreset.Value.Objects.Remove(obj);
+                    }
+
+                    if (CollisionTester.Test(Player.PlayerObject, obj))
+                    {
+                        obj.Collision();
+                    }
+
                     obj.CallParameter.Position.Z -= Speed * (float)SMGlobals.UpdateDeltatime;
+                }
         }
 
         public static void Create()
@@ -68,7 +86,12 @@ namespace Gamejam_2020
                 }
                 else call = drawCalls[obj.Material];
 
-                obj.CallParameter = new CallParameter() {Position = new Position(obj.RelativePosition.X, obj.RelativePosition.Y, obj.RelativePosition.Z)};
+                obj.CallParameter = new CallParameter()
+                {
+                    Position = new Position(obj.RelativePosition.X * SizeMultiplier - 4 * SizeMultiplier, obj.RelativePosition.Y * SizeMultiplier - 4 * SizeMultiplier, obj.RelativePosition.Z * SizeMultiplier + 10),
+                    Rotation = new Rotation(z: obj.Rotation * 90),
+                    Size = new Size(SizeMultiplier)
+                };
                 call.DrawCallParameters.Add(obj.CallParameter);
                 obj.DrawCall = call;
             }

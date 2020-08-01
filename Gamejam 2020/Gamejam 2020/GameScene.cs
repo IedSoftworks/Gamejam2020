@@ -20,6 +20,8 @@ namespace Gamejam_2020
                 new Keybind(a => Lights.Ambient = new Color(1,1,1), Key.F11)
             });
 
+            AxisHelper = false;
+
             Lights.Ambient = new Color(.1f,.1f,.1f);
             Lights.Add(new Sun(new Vector3(0,-1,5)));
             //Lights.Add(new Sun(new Vector3(0,1,5)));

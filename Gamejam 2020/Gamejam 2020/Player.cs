@@ -5,23 +5,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
+using OpenTK.Graphics;
 using OpenTK.Input;
 using SM;
+using SM.Core;
+using SM.Data.Models;
 using SM.Data.Types;
 using SM.Data.Types.VectorTypes;
 using SM.Keybinds;
 using SM.Scene;
 using SM.Scene.Draw;
+using SM.Scene.Draw.Particles;
 
 namespace Gamejam_2020
 {
     public class Player : DrawObject
     {
+        private static Rotation particleRotation = new Rotation(0, 0, 180);
+
+        public static Player PlayerObject;
+
         public Direction Velocity = new Direction(0,0,0);
         public Position StartPoint = new Position(0, 0, 7);
         public Direction lastVelocity = new Direction(0,0,0);
         public Player()
         {
+            PlayerObject = this;
+
             Mesh = Models.Spaceship;
             Rotation = new Rotation(0, 180, 0);
             //Position = StartPoint;
@@ -49,7 +59,23 @@ namespace Gamejam_2020
                     Velocity.Y -= speed;
                 }, Key.S)});
 
+            Timer particleTimer = new Timer(1/30f, true);
+            particleTimer.End += timer =>
+            {
+                Color4[] colorlist = new[] { Color4.Orange, Color4.OrangeRed, Color4.Red };
 
+                GameScene.Current.Add(new DrawParticles(new ConeParticles() { Amount = 1, RotateTowardsOrigin = true, Cone = new Vector2(.25f), MaxSize = .5f, MaxSpeed = 10f})
+                {
+                    Position = new Position(Position.X, Position.Y, StartPoint.Z - Models.Spaceship.OBB_Max.Z),
+                    Rotation = particleRotation,
+                    Time = TimeSpan.FromSeconds(1),
+                    FadeInEndTime = 0.1f,
+                    FadeOutStartTime = 0.1f,
+                    Mesh = Models.Triangle,
+                    Material = {DiffuseColor = colorlist[SMGlobals.Randomizer.Next(colorlist.Length)], AllowLight = false}
+                });
+            };
+            particleTimer.Start();
         }
 
         public void Tick()
