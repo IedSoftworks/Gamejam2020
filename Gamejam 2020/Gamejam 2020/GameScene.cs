@@ -1,4 +1,5 @@
-﻿using SM.Data.Models;
+﻿using OpenTK;
+using SM.Data.Models;
 using SM.Data.Types.VectorTypes;
 using SM.Scene;
 using SM.Scene.Cameras;
@@ -32,9 +33,10 @@ namespace Gamejam_2020
 
         public GameScene()
         {
-            Lights.Ambient = new Color(1,1,1);
-            
+            Lights.Ambient = new Color(.1f,.1f,.1f);
+            Lights.Add(new Sun(new Vector3(0,-1,-5)));
 
+            Background = new Background();
         }
     }
 }
