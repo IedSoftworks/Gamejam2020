@@ -47,7 +47,7 @@ namespace Gamejam_2020
                 Z = 5f
             };
 
-            CallParameter parameter = new CallParameter()
+            CallParameter parameter = new CallParameter
             {
                 Position = pos,
                 Size = new Size((float)SMGlobals.Randomizer.NextDouble() * .1f)
