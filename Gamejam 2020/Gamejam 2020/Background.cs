@@ -1,4 +1,5 @@
 ﻿using System;
+using Assimp;
 using OpenTK.Graphics.OpenGL4;
 using SM;
 using SM.Animations;
@@ -8,6 +9,7 @@ using SM.Data.Models;
 using SM.Data.Types.VectorTypes;
 using SM.Scene.Cameras;
 using SM.Scene.Draw;
+using Animation = SM.Animations.Animation;
 
 namespace Gamejam_2020
 {
@@ -18,7 +20,7 @@ namespace Gamejam_2020
 
         private DrawCall call;
 
-        public Background()
+        public Background(Scene scene)
         {
             Camera = new PerspectiveCamera();
             DepthFunc = DepthFunction.Less;
