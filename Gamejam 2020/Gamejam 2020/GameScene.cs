@@ -10,27 +10,7 @@ namespace Gamejam_2020
 {
     public class GameScene : Scene
     {
-        DrawObject ship = new DrawObject
-        {
-            Mesh = Models.Spaceship,
-            Material = new Material {DiffuseColor = new Color(1,0,0)}
-        };
-        DrawObject pyramid = new DrawObject
-        {
-            Mesh = Models.Pyramid,
-            Position = new Position(0, z:5)
-        };
-        DrawObject cube = new DrawObject
-        {
-            Mesh = Models.Cube,
-            Position = new Position(0, z: 10)
-        };
-        DrawObject tri = new DrawObject
-        {
-            Mesh = Models.Triangle,
-            Position = new Position(0, z: 15)
-        };
-
+        public Player player;
         public GameScene()
         {
             Lights.Ambient = new Color(.1f,.1f,.1f);
@@ -38,11 +18,11 @@ namespace Gamejam_2020
 
             Add(new Background(this));
 
-            var p = new Player();
-            Add(p);
+            player = new Player();
+            Add(player);
 
             Camera.Position = new Position(0, 3, 0);
-            ((PerspectiveCamera) Camera).Target = p.Position;
+            ((PerspectiveCamera) Camera).Target = player.Position;
         }
     }
 }
