@@ -33,7 +33,7 @@ namespace Gamejam_2020
                 }
             }
 
-            Triangle = new Mesh()
+            Triangle = new Mesh
             {
                 Vertices =
                 {
