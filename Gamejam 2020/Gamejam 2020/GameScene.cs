@@ -34,7 +34,7 @@ namespace Gamejam_2020
         {
             Lights.Ambient = new Color(1,1,1);
             
-
+            AddRange(ship);
         }
     }
 }
