@@ -3,6 +3,7 @@ using SM.Data.Types.VectorTypes;
 using SM.Scene;
 using SM.Scene.Cameras;
 using SM.Scene.Draw;
+using SM.Scene.Lights;
 
 namespace Gamejam_2020
 {
@@ -32,10 +33,8 @@ namespace Gamejam_2020
         public GameScene()
         {
             Lights.Ambient = new Color(1,1,1);
+            
 
-            AddRange(ship, pyramid, cube, tri);
-            ((PerspectiveCamera)Camera).Position = new Position(5, 2, 7.5f);
-            ((PerspectiveCamera)Camera).Target = new Position(0, z: 7.5f);
         }
     }
 }

@@ -3,6 +3,7 @@ using SM.Core.Enums;
 using SM.Core.Plugin;
 using SM.Core.Window;
 using SM.Scene;
+using SM.Scene.Cameras;
 
 namespace Gamejam_2020
 {
@@ -12,6 +13,8 @@ namespace Gamejam_2020
 
         public override void Loading(EventArgs e, GLWindow window)
         {
+            OrthographicCamera.WidthScale = 1000;
+
             Models.OpenModels();
             Scene.ChangeScene(new GameScene());
         }
