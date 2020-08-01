@@ -64,10 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Background.cs" />
+    <Compile Include="CollisionTester.cs" />
     <Compile Include="GameScene.cs" />
     <Compile Include="GameWindow.cs" />
     <Compile Include="Models.cs" />
-    <Compile Include="Objects.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
