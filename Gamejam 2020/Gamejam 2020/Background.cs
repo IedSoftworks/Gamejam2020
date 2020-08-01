@@ -18,7 +18,6 @@ namespace Gamejam_2020
         private const float Width = 5f;
         private const float Height = 5f;
         private const float XOffset = 5f;
-        private const float YOffset = 1f;
 
         private DrawCall call;
 
@@ -38,19 +37,24 @@ namespace Gamejam_2020
             {
                 Repeat = true
             };
-            timer.End += TimerSys;
+            timer.End += (t) => CreateStar(50f);
             timer.Start();
+
+            for (int i = 0; i < 30; i++)
+            {
+                CreateStar(30);
+            }
         }
 
-        private void TimerSys(Timer timer)
+        private void CreateStar(float z)
         {
             float xoffset = XOffset * (SMGlobals.Randomizer.NextDouble() < .5f ? -1 : 1);
 
             Position pos = new Position
             {
-                X = (float) (SMGlobals.Randomizer.NextDouble() * (Width * 2) * xoffset),
-                Y = (float) (SMGlobals.Randomizer.NextDouble() * (Height * 2) * -1),
-                Z = 50f
+                X = (float)(SMGlobals.Randomizer.NextDouble() * (Width * 2) * xoffset),
+                Y = (float)(SMGlobals.Randomizer.NextDouble() * (Height * 2) * -1),
+                Z = z
             };
 
 
@@ -61,7 +65,7 @@ namespace Gamejam_2020
                 Size = new Size((float)SMGlobals.Randomizer.NextDouble() * .1f)
             };
             call.DrawCallParameters.Add(parameter);
-            Animation animation = new Animation(pos, new AnimationStruct(TimeSpan.FromSeconds(5), false,  pos, new AnimationVector(pos.X, pos.Y, -1)), false);
+            Animation animation = new Animation(pos, new AnimationStruct(TimeSpan.FromSeconds(5), false, pos, new AnimationVector(pos.X, pos.Y, -1)), false);
             animation.End += a => call.DrawCallParameters.Remove(parameter);
             animation.Start();
         }

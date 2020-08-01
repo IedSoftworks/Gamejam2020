@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamejam 2020", "Gamejam 2020\Gamejam 2020.csproj", "{52833261-24FD-46F4-85DC-4578C1C966EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM", "D:\CSharp\SMRendererV2\SMRendererV2\SMRenderer\SM\SM.csproj", "{ED316D46-FAB5-4996-9012-E8304F73BD18}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM.Core", "D:\CSharp\SMRendererV2\SMRendererV2\SMRenderer\SM.Core\SM.Core.csproj", "{1D351CC8-D673-49E9-A016-7AA435531743}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{52833261-24FD-46F4-85DC-4578C1C966EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52833261-24FD-46F4-85DC-4578C1C966EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52833261-24FD-46F4-85DC-4578C1C966EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED316D46-FAB5-4996-9012-E8304F73BD18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED316D46-FAB5-4996-9012-E8304F73BD18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED316D46-FAB5-4996-9012-E8304F73BD18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED316D46-FAB5-4996-9012-E8304F73BD18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D351CC8-D673-49E9-A016-7AA435531743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D351CC8-D673-49E9-A016-7AA435531743}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D351CC8-D673-49E9-A016-7AA435531743}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D351CC8-D673-49E9-A016-7AA435531743}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
