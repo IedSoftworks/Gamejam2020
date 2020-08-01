@@ -6,14 +6,15 @@ namespace Gamejam_2020
 {
     public static class CollisionTester
     {
-        public static bool Test(DrawObject a, DrawObject b)
+        public static bool Test(GameObject ga, GameObject gb)
         {
-            var aMin = a.Mesh.OBB_Min + a.Position;
-            var aMax = a.Mesh.OBB_Max + a.Position;
-            var bMin = b.Mesh.OBB_Min + a.Position;
-            var bMax = b.Mesh.OBB_Max + a.Position;
-            var boundsA = MakeBoundPoints(new[] {a.Mesh.OBB_Min, a.Mesh.OBB_Max});
-            var boundsB = MakeBoundPoints(new[] {b.Mesh.OBB_Min, b.Mesh.OBB_Max});
+            
+            var aMin = ga.Mesh.OBB_Min + ga.CallParameter.Position;
+            var aMax = ga.Mesh.OBB_Min + ga.CallParameter.Position;
+            var bMin = gb.Mesh.OBB_Min + gb.CallParameter.Position;
+            var bMax = gb.Mesh.OBB_Min + gb.CallParameter.Position;
+            var boundsA = MakeBoundPoints(new[] {ga.Mesh.OBB_Min, ga.Mesh.OBB_Max});
+            var boundsB = MakeBoundPoints(new[] {gb.Mesh.OBB_Min, gb.Mesh.OBB_Max});
             return boundsA.Any(p => IsInBounds(p, bMin, bMax)) || boundsB.Any(p => IsInBounds(p, aMin, aMax));
         }
 
